@@ -1,13 +1,26 @@
 <?php 
 
-if ($api == 'exe') {
-    if ($method == "GET") {
-        include_once "getExe.php";
-    }
-}
+if ($method == "GET") {
+    //Rotas por GET
+    switch ($api) {
+        case 'exe':
+            include_once "getExe.php";
+            break;
 
-if ($api == 'versao') {
-    if ($method == "GET") {
-        include_once "getVersao.php";
+        case 'versao':
+            include_once "getVersao.php";
+            break;
+
+        case 'novaslabels':
+            include_once "getVerLabel.php";
+            break;
+
+        case 'labels':
+            include_once "getLabels.php";
+            break;
+
+        default:
+            echo json_encode(['erro' => 'Rota desconhecida']);
+            break;
     }
 }

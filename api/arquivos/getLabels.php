@@ -1,8 +1,7 @@
 <?php 
 
 // Arquivo
-$filePath = "C:\Farben Labelatualizar\Exe\FarbenLabel.zip";
-include_once "pegaVersaoExe.php";
+$filePath = "C:\Farben Labelatualizar\Labels\Labels.zip";
 
 // Verifica se o arquivo existe
 if (file_exists($filePath)) {
@@ -15,10 +14,7 @@ if (file_exists($filePath)) {
 
     // Prepara a resposta JSON com os detalhes do arquivo
     $response = [
-        'nome' => $fileName,
-        'tamanho' => $fileSize,
-        'versao' => getFileVersion("C:\Farben Labelatualizar\Exe\VersaoExe.ini"),
-        'data' => $fileContent
+        'labels' => $fileContent
     ];
 
     echo json_encode($response);

@@ -3,6 +3,10 @@
 if ($method == "GET") {
     //Rotas por GET
     switch ($api) {
+        case 'verifica-conexao':
+            include_once "getConn.php";
+            break;
+
         case 'exe':
             include_once "getExe.php";
             break;

@@ -1,7 +1,8 @@
 <?php 
 
-// Defina o caminho do arquivo aqui
-$filePath = "C:\Farben Label\Labels\ET60x100.fr3";
+
+// Arquivo
+$filePath = "C:\Farben Label-atualizar\Exe\FarbenLabel.zip";
 
 // Verifica se o arquivo existe
 if (file_exists($filePath)) {
@@ -14,9 +15,10 @@ if (file_exists($filePath)) {
 
     // Prepara a resposta JSON com os detalhes do arquivo
     $response = [
-        'fileName' => $fileName,
-        'fileSize' => $fileSize,
-        'fileContent' => $fileContent
+        'nome' => $fileName,
+        'tamanho' => $fileSize,
+        'versao' => $fileVersion,
+        'data' => $fileContent
     ];
 
     echo json_encode($response);

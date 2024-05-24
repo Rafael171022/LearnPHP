@@ -7,10 +7,6 @@ if ($method == "GET") {
             include_once "getConn.php";
             break;
 
-        case 'exe':
-            include_once "getExe.php";
-            break;
-
         case 'versao':
             include_once "getVersao.php";
             break;
@@ -27,4 +23,18 @@ if ($method == "GET") {
             echo json_encode(['erro' => 'Rota desconhecida']);
             break;
     }
+}
+
+
+if ($method == "POST") {
+    switch ($api) {
+        case 'atualizaExe':
+            include_once "getExe.php";
+            break;
+            
+        default:
+            echo json_encode(['erro' => 'Rota desconhecida']);
+            break;
+
+    }   
 }

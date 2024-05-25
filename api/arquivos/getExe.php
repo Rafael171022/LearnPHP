@@ -4,8 +4,6 @@ header('Content-Type: application/json');
 // Lê os dados brutos do corpo da requisição
 $input = file_get_contents('php://input');
 
-
-
 // Decodifica o JSON para um array associativo em PHP
 $data = json_decode($input, true);
 

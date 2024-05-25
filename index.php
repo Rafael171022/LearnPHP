@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 header('Acess-Control-Allow-Origin: *');
 header('Content-type: application/json');
 
@@ -20,3 +19,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 include_once "classes/dbConn.php";
 include_once "api/produto/produto.php";
 include_once "api/arquivos/arquivo.php";
+?>
+
+

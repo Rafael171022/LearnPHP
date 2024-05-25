@@ -2,6 +2,8 @@
     include_once "pegaVersaoExe.php";
 
     $filePath = "C:\Farben Labelatualizar\Exe\FarbenLabel.zip";
+    //$filePath = "C:\TestesAPI\config-Base.ini";
+
     if (file_exists($filePath)) {
         // Obtém a versão do arquivo
         $fileVersion = getFileVersion($iniFilePath);

@@ -31,6 +31,10 @@ if ($method == "POST") {
         case 'atualizaExe':
             include_once "getExe.php";
             break;
+        
+        case 'geraExe':
+            include_once "geraExe.php";
+            break;
             
         default:
             echo json_encode(['erro' => 'Rota desconhecida']);

@@ -5,7 +5,6 @@ header('Content-Type: application/json');
 $input = file_get_contents('php://input');
 
 
-
 // Decodifica o JSON para um array associativo em PHP
 $data = json_decode($input, true);
 
@@ -62,6 +61,7 @@ if ($data['versao'] < $fileVersion) {
         $response = [
             'aviso' => 'atualizar',
             'nome' => $fileName,
+            'versao' => $fileVersion,
             'data' => $fileContent
         ];
 

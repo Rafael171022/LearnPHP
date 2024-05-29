@@ -14,6 +14,7 @@ if (file_exists($filePath)) {
 
     // Prepara a resposta JSON com os detalhes do arquivo
     $response = [
+        "nome" => $fileName,
         'labels' => $fileContent
     ];
 

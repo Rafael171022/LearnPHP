@@ -1,94 +1,53 @@
-<?php 
-header('Content-Type: application/json');
+<?php
+include_once "pegaVersaoExe.php";
 
-// Lê os dados brutos do corpo da requisição
-$inputJSON = file_get_contents('php://input');
+// Passo 1: Receber e decodificar o JSON
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
 
-$input = json_decode($inputJSON,TRUE);
+$newVersion = $data['versao'];
 
-if (isset($input['exe'])) {
-    $base64 = $input['exe'];
-    
-    // Decodificar o valor Base64
-    $fileData = base64_decode($base64);
-
-    // Definir o caminho do arquivo para salvar
-    $filePath = 'C:/Farben Labelatualizar/Exe';
-    //$filePath = 'C:\Program Files (x86)\Teste';
-    // Salvar o arquivo
-
-    move_uploaded_file($fileData,$filePath.$fileData);
-
-    // if (file_put_contents($filePath, $fileData) !== false) {
-    //     echo "Arquivo salvo com sucesso em: " . $filePath;
-    // } else {
-    //     echo "Erro ao salvar o arquivo.";
-    // }
+if (isset($data['versao'])) {
+    setFileVersion($iniFilePath, $newVersion);
 } else {
-    echo "Dados 'exe' não encontrados no JSON.";
+    http_response_code(400);
+    echo json_encode(["error" => "Faltou o parametro"]);
+    exit;
 }
 
-/*
-// Decodifica o JSON para um array associativo em PHP
-$data = json_decode($input, true);
 
-if (strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
-    // Lê o corpo da requisição
-    $input = file_get_contents('php://input');
+if (isset($data['exe'])) {
+    // Passo 2: Decodificar o arquivo base64
+    $fileContent = base64_decode($data['exe']);
 
-    // Decodifica o JSON recebido
-    $data = json_decode($input, true);
+    if ($fileContent === false) {
+        // Erro na decodificação do base64
+        http_response_code(400);
+        echo json_encode(["error" => "Base64 decoding failed"]);
+        exit;
+    }
+    
+    $filePath = 'C:\Farben Labelatualizar\Exe\FarbenLabel.zip';
 
-    // Verifica se a decodificação foi bem-sucedida
-    if (json_last_error() === JSON_ERROR_NONE) {
-        // Use os dados decodificados ($data)
-        //var_dump($data);  // Para depuração, remova ou substitua por lógica apropriada
+    // Certifique-se de que a pasta 'Exe' existe e é gravável
+    if (!file_exists('C:\Farben Labelatualizar\Exe')) {
+        mkdir('C:\Farben Labelatualizar\Exe', 0777, true);
+    }
+
+    if (file_put_contents($filePath, $fileContent) !== false) {
+        http_response_code(200);
+        echo json_encode(["aviso" => "Arquivo salvo com sucesso!"]);
     } else {
-        // Lidar com erro de decodificação
-        echo 'Erro ao decodificar JSON: ' . json_last_error_msg();
+        // Erro ao salvar o arquivo
+        http_response_code(500);
+        echo json_encode(["error" => "Falha ao salvar o arquivo"]);
     }
 } else {
-    echo 'Método de requisição não suportado ou Content-Type incorreto';
-
+    // JSON inválido ou chave 'exe' não encontrada
+    http_response_code(400);
+    echo json_encode(["error" => "Invalid JSON or missing 'exe' key"]);
 }
 
-// Verifica se a decodificação foi bem-sucedida
-if ($data === null) {
-    echo json_encode(['Erro' => 'JSON Invalido']);
-    exit;
-}
 
-// Verifica se todos os campos necessários estão presentes
-if (!isset($data['exe'])) {
-    echo json_encode(['Erro' => 'Dados incompletos']);
-    exit;
-}
-
-// Caminho do arquivo
-$filePath = "C:\Farben Labelatualizar\Exe";
-$fileContent = $data['exe'];
-
-var_dump(json_decode($fileContent));
-
-
-//var_dump($fileContent);
-  
-// Define o caminho e o nome do arquivo de destino
-$output = $filePath . '\\' .$fileContent;
-      
-// Certifica-se de que o diretório de destino existe
-if (!is_dir($filePath)) {
-    mkdir($filePath, 0755, true);
-}
-    
-// Salva o conteúdo decodificado no arquivo de destino
-file_put_contents($FilePath,$fileContent['exe']);
-
-// Prepara a resposta JSON com os detalhes do arquivo
-$response = [
-    'aviso' => 'Arquivos gerados',
-];
-
-echo json_encode($response);
-*/
 ?>
+ 

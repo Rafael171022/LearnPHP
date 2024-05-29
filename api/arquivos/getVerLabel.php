@@ -6,8 +6,8 @@ $iniFilePath = "C:\Farben Labelatualizar\Labels\NovasLabels.ini";
 function getFileVersion($iniFilePath) {
     if (file_exists($iniFilePath)) {
         $iniArray = parse_ini_file($iniFilePath, true);
-        if (isset($iniArray['Novas']['New']) == 'sim') {
-            return $iniArray['Novas']['New'];
+        if (isset($iniArray['Novas']['date'])) {
+            return $iniArray['Novas']['date'];
         } else {
             error_log("Não foi possivel encontrar");
             return 'Não existe novas labels para atualizar';
@@ -22,7 +22,7 @@ $filePath = "C:\Farben Labelatualizar\Exe\FarbenLabel.zip";
 if (file_exists($filePath)) {
     $fileVersion = getFileVersion($iniFilePath);
     $response = [
-        'novaslabels' => $fileVersion
+        'date' => $fileVersion
     ];
     echo json_encode($response);
 

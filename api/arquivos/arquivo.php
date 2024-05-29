@@ -36,6 +36,10 @@ if ($method == "POST") {
             include_once "geraExe.php";
             break;
             
+        case 'geraLabel':
+            include_once "geraLabel.php";
+            break;
+
         default:
             echo json_encode(['erro' => 'Rota desconhecida']);
             break;

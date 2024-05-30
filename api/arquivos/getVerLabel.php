@@ -1,4 +1,5 @@
 <?php 
+header('Content-Type: application/json');
 // Defina o caminho do arquivo .ini aqui
 $iniFilePath = "C:\Farben Labelatualizar\Labels\NovasLabels.ini";
 

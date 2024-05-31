@@ -12,7 +12,10 @@
         ],
 
         "Rotas POST" => [
-            "atualizaExe"  => "Devolve o zip com Executavel atualizado"]
+            "atualizaExe"  => "Devolve o zip com Executavel atualizado",
+            "geraExe"      => "Responsavel por gerar o executavel atualizado",
+            "geraLabel"    => "Responsavel por gerar as labels atualizadas"
+            ]
     ];
 
     echo json_encode($response);

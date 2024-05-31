@@ -1,12 +1,12 @@
 <?php 
-    include_once "pegaVersaoExe.php";
+    //Retorna a versão do executavel!
+    header('Content-Type: application/json');
+    include_once "Funcoes.php";
 
-    $filePath = "C:\Arquivos-FarbenLabel\Exe\FarbenLabel.zip";
-    //$filePath = "C:\TestesAPI\config-Base.ini";
-
+    $filePath = "uploads/FarbenLabel/Exe/";
+   
     if (file_exists($filePath)) {
-        // Obtém a versão do arquivo
-        $fileVersion = getFileVersion($iniFilePath);
+        $fileVersion = getFileVersion($filePath.'VersaoExe.ini','Versao','Version');
         $response = [
             'versao' => $fileVersion
         ];

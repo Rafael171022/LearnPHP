@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 // Arquivo
-$filePath = "C:\Arquivos-FarbenLabel\Labels\Labels.zip";
+$filePath = "uploads/FarbenLabel/Labels/Labels.zip";
 
 // Verifica se o arquivo existe
 if (file_exists($filePath)) {

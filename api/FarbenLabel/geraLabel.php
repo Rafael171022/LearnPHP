@@ -1,18 +1,19 @@
 <?php
 
-include_once "pegaVersaoLabel.php";
+include_once "Funcoes.php";
 
 // Passo 1: Receber e decodificar o JSON
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
-$newVersion = $data['date'];
+$newVersion  = $data['date'];
+$iniFilePath = 'uploads/FarbenLabel/Labels/NovasLabels.ini';
 
 if (isset($data['date'])) {
-    setFileVersion($iniFilePath, $newVersion);
+    Ini($iniFilePath,$newVersion,'Novas','date');
 } else {
     http_response_code(400);
-    echo json_encode(["error" => "Faltou o parametro date"]);
+    echo json_encode(["aviso" => "Faltou o parametro date"]);
     exit;
 }
 
@@ -23,15 +24,15 @@ if (isset($data['labels'])) {
     if ($fileContent === false) {
         // Erro na decodificação do base64
         http_response_code(400);
-        echo json_encode(["error" => "Base64 decoding failed"]);
+        echo json_encode(["aviso" => "Base64 decoding failed"]);
         exit;
     }
     
-    $filePath = 'C:\Arquivos-FarbenLabel\Labels\Labels.zip';
+    $filePath = 'uploads/FarbenLabel/Labels/Labels.zip';
 
     // Certifique-se de que a pasta 'Exe' existe e é gravável
-    if (!file_exists('C:\Arquivos-FarbenLabel\Labels')) {
-        mkdir('C:\Arquivos-FarbenLabel\Labels', 0777, true);
+    if (!file_exists('uploads/FarbenLabel/Labels')) {
+        mkdir('uploads/FarbenLabel/Labels', 0777, true);
     }
 
     if (file_put_contents($filePath, $fileContent) !== false) {
@@ -40,12 +41,12 @@ if (isset($data['labels'])) {
     } else {
         // Erro ao salvar o arquivo
         http_response_code(500);
-        echo json_encode(["error" => "Falha ao salvar o arquivo"]);
+        echo json_encode(["aviso" => "Falha ao salvar o arquivo"]);
     }
 } else {
     // JSON inválido ou chave 'exe' não encontrada
     http_response_code(400);
-    echo json_encode(["error" => "Invalid JSON or missing 'labels' key"]);
+    echo json_encode(["aviso" => "Invalid JSON or missing 'labels' key"]);
 }
 
 

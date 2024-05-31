@@ -1,14 +1,15 @@
 <?php
-include_once "pegaVersaoExe.php";
+include_once "Funcoes.php";
 
 // Passo 1: Receber e decodificar o JSON
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
+$iniFilePath = 'uploads/FarbenLabel/Exe/VersaoExe.ini';
 $newVersion = $data['versao'];
 
 if (isset($data['versao'])) {
-    setFileVersion($iniFilePath, $newVersion);
+    Ini($iniFilePath,$newVersion,'Versao','Version');    
 } else {
     http_response_code(400);
     echo json_encode(["error" => "Faltou o parametro"]);
@@ -27,11 +28,11 @@ if (isset($data['exe'])) {
         exit;
     }
     
-    $filePath = 'C:\Arquivos-FarbenLabel\Exe\FarbenLabel.zip';
+    $filePath = 'uploads/FarbenLabel/Exe/FarbenLabel.zip';
 
     // Certifique-se de que a pasta 'Exe' existe e é gravável
-    if (!file_exists('C:\Arquivos-FarbenLabel\Exe')) {
-        mkdir('C:\Arquivos-FarbenLabel\Exe', 0777, true);
+    if (!file_exists('uploads/FarbenLabel/Exe')) {
+        mkdir('uploads/FarbenLabel/Exe/', 0777, true);
     }
 
     if (file_put_contents($filePath, $fileContent) !== false) {

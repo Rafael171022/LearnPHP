@@ -43,10 +43,10 @@ if (!isset($data['versao'])) {
 
 
 // Arquivo
-$filePath = "C:\Farben Labelatualizar\Exe\FarbenLabel.zip";
+$filePath = "C:\Arquivos-FarbenLabel\Exe\FarbenLabel.zip";
 include_once "pegaVersaoExe.php";
 
-$fileVersion = getFileVersion("C:\Farben Labelatualizar\Exe\VersaoExe.ini");
+$fileVersion = getFileVersion("C:\Arquivos-FarbenLabel\Exe\VersaoExe.ini");
 
 if ($data['versao'] < $fileVersion) {
 

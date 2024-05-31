@@ -1,7 +1,7 @@
 <?php 
 header('Content-Type: application/json');
 // Defina o caminho do arquivo .ini aqui
-$iniFilePath = "C:\Farben Labelatualizar\Labels\NovasLabels.ini";
+$iniFilePath = "C:\Arquivos-FarbenLabel\Labels\NovasLabels.ini";
 
 // Função para obter a versão do arquivo a partir do .ini
 function getFileVersion($iniFilePath) {
@@ -19,7 +19,7 @@ function getFileVersion($iniFilePath) {
     }
 }
 
-$filePath = "C:\Farben Labelatualizar\Exe\FarbenLabel.zip";
+$filePath = "C:\Arquivos-FarbenLabel\Exe\FarbenLabel.zip";
 if (file_exists($filePath)) {
     $fileVersion = getFileVersion($iniFilePath);
     $response = [

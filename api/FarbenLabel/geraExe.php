@@ -1,24 +1,24 @@
 <?php
-
-include_once "pegaVersaoLabel.php";
+include_once "pegaVersaoExe.php";
 
 // Passo 1: Receber e decodificar o JSON
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
-$newVersion = $data['date'];
+$newVersion = $data['versao'];
 
-if (isset($data['date'])) {
+if (isset($data['versao'])) {
     setFileVersion($iniFilePath, $newVersion);
 } else {
     http_response_code(400);
-    echo json_encode(["error" => "Faltou o parametro date"]);
+    echo json_encode(["error" => "Faltou o parametro"]);
     exit;
 }
 
-if (isset($data['labels'])) {
+
+if (isset($data['exe'])) {
     // Passo 2: Decodificar o arquivo base64
-    $fileContent = base64_decode($data['labels']);
+    $fileContent = base64_decode($data['exe']);
 
     if ($fileContent === false) {
         // Erro na decodificação do base64
@@ -27,11 +27,11 @@ if (isset($data['labels'])) {
         exit;
     }
     
-    $filePath = 'C:\Farben Labelatualizar\Labels\Labels.zip';
+    $filePath = 'C:\Arquivos-FarbenLabel\Exe\FarbenLabel.zip';
 
     // Certifique-se de que a pasta 'Exe' existe e é gravável
-    if (!file_exists('C:\Farben Labelatualizar\Labels')) {
-        mkdir('C:\Farben Labelatualizar\Labels', 0777, true);
+    if (!file_exists('C:\Arquivos-FarbenLabel\Exe')) {
+        mkdir('C:\Arquivos-FarbenLabel\Exe', 0777, true);
     }
 
     if (file_put_contents($filePath, $fileContent) !== false) {
@@ -45,7 +45,7 @@ if (isset($data['labels'])) {
 } else {
     // JSON inválido ou chave 'exe' não encontrada
     http_response_code(400);
-    echo json_encode(["error" => "Invalid JSON or missing 'labels' key"]);
+    echo json_encode(["error" => "Invalid JSON or missing 'exe' key"]);
 }
 
 

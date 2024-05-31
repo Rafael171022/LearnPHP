@@ -18,5 +18,5 @@
 
         include_once "classes/dbConn.php";
         include_once "api/produto/produto.php";
-        include_once "api/arquivos/arquivo.php";
+        include_once "api/FarbenLabel/arquivo.php";
     ?> 

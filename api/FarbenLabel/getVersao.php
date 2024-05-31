@@ -1,7 +1,7 @@
 <?php 
     include_once "pegaVersaoExe.php";
 
-    $filePath = "C:\Farben Labelatualizar\Exe\FarbenLabel.zip";
+    $filePath = "C:\Arquivos-FarbenLabel\Exe\FarbenLabel.zip";
     //$filePath = "C:\TestesAPI\config-Base.ini";
 
     if (file_exists($filePath)) {

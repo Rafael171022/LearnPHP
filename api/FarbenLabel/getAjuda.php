@@ -4,7 +4,7 @@
     $response = [
         "Rotas GET" => [
             "ajuda"            => "Verificar as rotas",
-            "verifica-conexa"  => "Verificar se api esta online",
+            "verifica-conexao"  => "Verificar se api esta online",
             "versao"           => "Devolve a versão do arquivo Exe do Farben Label",
             "novaslabels"      => "Devolve a data da ultima alteração das labels",
             "labels"           => "Devolve o zip com as labels",

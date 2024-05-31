@@ -1,5 +1,6 @@
 <?php 
 
+header('Content-Type: application/json');
 // Arquivo
 $filePath = "C:\Farben Labelatualizar\Labels\Labels.zip";
 

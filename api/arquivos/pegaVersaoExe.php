@@ -1,5 +1,6 @@
 <?php 
 $iniFilePath = "C:\Farben Labelatualizar\Exe\VersaoExe.ini";
+//$iniFilePath = "C:\TestesAPI\config-Base.ini";
 
 function getFileVersion($iniFilePath) {
     if (file_exists($iniFilePath)) {

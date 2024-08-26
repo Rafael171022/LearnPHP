@@ -1,23 +1,17 @@
 <?php 
     header('Acess-Control-Allow-Origin: *');
-    //header('Content-Type: application/json');
-
-    if (isset($_GET['path'])) {
-        $path = explode("/",$_GET['path']);
-    }else {
-        echo "Bem vindo a API do PHP";
-        exit;
-    }
-
-    if (isset($path[0])) { $api     = $path[0]; } else { echo "Caminho não existe"; exit;}
-    if (isset($path[1])) { $acao    = $path[1]; } else { $acao  = '';}
-    if (isset($path[2])) { $param   = $path[2]; } else { $param = '';}
+  
+    $requestUri = $_SERVER['REQUEST_URI'];
+    $path       = parse_url($requestUri, PHP_URL_PATH);
+    $routes     = explode('/', trim($path, '/'));
+   
+    if (isset($routes [1])) { $api     = $routes [1]; } else { echo "Caminho não existe"; exit;}
+    if (isset($routes [2])) { $acao    = $routes [2]; } else { $acao  = '';}
+    if (isset($routes [3])) { $param   = $routes [3]; } else { $param = '';}
 
 
     $method = $_SERVER['REQUEST_METHOD'];
-    
-    
-    $rota = $path[1];
+    $rota   = $routes[2];
     
     switch ($api) {
         case 'produto':

@@ -2,6 +2,7 @@
 
 header('Content-Type: application/json');
 
+
 if ($method == "GET") {
     //Rotas por GET
     switch ($rota) {

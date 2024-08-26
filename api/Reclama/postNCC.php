@@ -40,24 +40,6 @@ if ($data) {
     try {
         // Enviando dados para o web service
         $response = [
-          /*  'TOKEN'     => 'JCSfdDTPps',
-            'EMPRESA'   => '01',
-            'FILIAL'    => '01',
-            'PREFIXO'   => 'REC',
-            'NUM'       => '9999',
-            'PARCELA'   => '001',
-            'TIPO'      => 'NCC',
-            'NATUREZ'   => '1.01',
-            'CLIENTE'   => '003186',
-            'LOJA'      => '01',
-            'EMISSAO'   => '20240822',
-            'VENCTO'    => '20240822',
-            'VENCREA'   => '20240822',
-            'HIST'      => 'TESTE_RECLAMACAO',
-            'VALOR'     => 0.01,
-            'MOEDA'     => 1
-
-            */
             'TOKEN'     => $TOKEN,
             'EMPRESA'   => $EMPRESA,
             'FILIAL'    => $FILIAL,
@@ -75,12 +57,33 @@ if ($data) {
             'VALOR'     => $VALOR,
             'MOEDA'     => $MOEDA
             
+            /*  
+            // Teste
+            'TOKEN'     => 'JCSfdDTPps',
+            'EMPRESA'   => '01',
+            'FILIAL'    => '01',
+            'PREFIXO'   => 'REC',
+            'NUM'       => '9999',
+            'PARCELA'   => '001',
+            'TIPO'      => 'NCC',
+            'NATUREZ'   => '1.01',
+            'CLIENTE'   => '003186',
+            'LOJA'      => '01',
+            'EMISSAO'   => '20240822',
+            'VENCTO'    => '20240822',
+            'VENCREA'   => '20240822',
+            'HIST'      => 'TESTE_RECLAMACAO',
+            'VALOR'     => 0.01,
+            'MOEDA'     => 1
+
+            */
+            
         ];
 
         //Manda Para ws_NCC incluir
         $retorno = $client->SE1_INCLUIR($response);
 
-        echo json_encode(array('status' => 'Incluida com sucesso', 'response' => $response));
+        echo json_encode(array('status' => 'Incluida com sucesso'));
     } catch (Exception $e) {
         echo json_encode(array('status' => 'error', 'message' => $e->getMessage()));
     }

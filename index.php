@@ -23,10 +23,10 @@
         case 'produto':
             include_once "api/produto/produto.php";
             break;
-        case 'FarbenLabel':
+        case 'farbenlabel':
             include_once "api/FarbenLabel/arquivo.php";
             break;
-        case 'Reclama':
+        case 'reclama':
             include_once "api/Reclama/rotasReclama.php";
             break;
         default:

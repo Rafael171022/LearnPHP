@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 
 if ($method == "GET") {
     //Rotas por GET
-    switch ($path[1]) {
-        case 'ajudaReclama':
+    switch ($rota) {
+        case 'ajuda-reclama':
             include_once "getAjuda.php";
             break;
 
@@ -17,7 +17,7 @@ if ($method == "GET") {
 
 
 if ($method == "POST") {
-    switch ($path[1]) {
+    switch ($rota) {
         case 'incluirNcc':
             include_once "postNCC.php";
             break;

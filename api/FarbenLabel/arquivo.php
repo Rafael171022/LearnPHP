@@ -1,8 +1,10 @@
 <?php 
 
+header('Content-Type: application/json');
+
 if ($method == "GET") {
     //Rotas por GET
-    switch ($api) {
+    switch ($path[1]) {
         case 'ajuda':
             include_once "getAjuda.php";
             break;
@@ -31,7 +33,7 @@ if ($method == "GET") {
 
 
 if ($method == "POST") {
-    switch ($api) {
+    switch ($path[1]) {
         case 'atualizaExe':
             include_once "getExe.php";
             break;

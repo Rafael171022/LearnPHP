@@ -1,5 +1,6 @@
 <?php
 
+header('Content-Type: application/json');
 include_once "Funcoes.php";
 
 // Passo 1: Receber e decodificar o JSON

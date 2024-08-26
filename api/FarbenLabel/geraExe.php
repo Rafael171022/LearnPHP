@@ -16,9 +16,7 @@ if (isset($data['versao'])) {
     exit;
 }
 
-
 if (isset($data['exe'])) {
-    // Passo 2: Decodificar o arquivo base64
     $fileContent = base64_decode($data['exe']);
 
     if ($fileContent === false) {

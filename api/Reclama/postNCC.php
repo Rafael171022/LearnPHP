@@ -83,7 +83,7 @@ if ($data) {
         //Manda Para ws_NCC incluir
         $retorno = $client->SE1_INCLUIR($response);
 
-        echo json_encode(array('status' => 'Incluida com sucesso'));
+        echo json_encode(array('status' => 'Ncc Incluida com sucesso'));
     } catch (Exception $e) {
         echo json_encode(array('status' => 'error', 'message' => $e->getMessage()));
     }

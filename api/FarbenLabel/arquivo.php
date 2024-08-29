@@ -25,6 +25,10 @@ if ($method == "GET") {
             include_once "getLabels.php";
             break;
 
+        case 'ultima-atualizacao':
+            include_once "getUltimaAtual.php";
+            break;
+            
         default:
             echo json_encode(['erro' => 'Rota desconhecida']);
             break;

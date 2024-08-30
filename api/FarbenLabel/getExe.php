@@ -28,7 +28,6 @@ if (strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
 
 }
 
-
 // Verifica se a decodificação foi bem-sucedida
 if ($data == null) {
     echo json_encode(['Erro' => 'JSON Invalido']);
@@ -41,12 +40,24 @@ if (!isset($data['versao'])) {
     exit;
 }
 
+if (!isset($data['app'])) {
+    echo json_encode(['Erro' => 'Dados incompletos']);
+    exit;
+}
+
+if (!isset($data['ini'])) {
+    echo json_encode(['Erro' => 'Dados incompletos']);
+    exit;
+}
+
+$app = $data['app'];
+$ini = $data['ini'];
 
 // Arquivo
-$filePath = "uploads/FarbenLabel/Exe/FarbenLabel.zip";
+$filePath = "uploads/FarbenLabel/Exe/".$app;
 include_once "Funcoes.php";
 
-$fileVersion = getFileVersion("uploads/FarbenLabel/Exe/VersaoExe.ini",'Versao','Version');
+$fileVersion = getFileVersion("uploads/FarbenLabel/Exe/VersaoExe.ini",$ini,'Version');
 
 if ($data['versao'] < $fileVersion) {
 

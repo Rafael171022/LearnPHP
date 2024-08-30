@@ -25,6 +25,10 @@ if ($method == "GET") {
             include_once "getLabels.php";
             break;
 
+        case 'atualizaExe':
+            include_once "getExe.php";
+            break;
+
         case 'ultima-atualizacao':
             include_once "getUltimaAtual.php";
             break;
@@ -38,10 +42,7 @@ if ($method == "GET") {
 
 if ($method == "POST") {
     switch ($rota) {
-        case 'atualizaExe':
-            include_once "getExe.php";
-            break;
-        
+    
         case 'geraExe':
             include_once "geraExe.php";
             break;

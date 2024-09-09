@@ -2,9 +2,11 @@
 
 class RequestHandler {
     private $data;
+    private $queryParams;
 
     public function __construct() {
         $this->setData();
+        $this->setQueryParams();
     }
 
     private function setData() {
@@ -21,6 +23,14 @@ class RequestHandler {
 
     public function getData() {
         return $this->data;
+    }
+
+    private function setQueryParams() {
+        $this->queryParams = $_GET; // Acessa os parâmetros da URL
+    }
+
+    public function getQueryParams() {
+        return $this->queryParams;
     }
 
     private function sendError($message) {

@@ -6,3 +6,6 @@ $filePath = "uploads/FarbenLabel/Labels/Labels.zip";
 $fileHandler = new FileHandler($filePath);
 $fileHandler->validate();
 
+
+
+

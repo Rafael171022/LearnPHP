@@ -14,11 +14,8 @@
     $rota   = $routes[2];
     
     switch ($api) {
-        case 'produto':
-            include_once "api/produto/produto.php";
-            break;
         case 'farbenlabel':
-            include_once "api/FarbenLabel/arquivo.php";
+            include_once "api/FarbenLabel/router.php";
             break;
         case 'reclama':
             include_once "api/Reclama/rotasReclama.php";

@@ -5,7 +5,7 @@ class AppDateHandle {
 
     public function __construct() {}
 
-   public function checkfile() {
+    public function checkfile() {
         include_once "./api/farbenlabel/functions/Funcoes.php";
         $this->fileVersion = getFileVersion("uploads/FarbenLabel/UltimaAtual.ini", "Atualizacao", "data");
 
@@ -17,10 +17,7 @@ class AppDateHandle {
     }
 
     public function sendFileDetails() {
-        $response = [
-            'ultima' => $this->fileVersion
-        ];
+        $response = ['ultima' => $this->fileVersion];
         echo json_encode($response);
-   
     }
 }

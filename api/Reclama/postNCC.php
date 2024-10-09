@@ -26,7 +26,7 @@ if ($data) {
     
     // Credenciais de autenticação
     $username = 'rest.cliente';
-    $password = 'far159';
+    $password = 'far160';
 
     $client = new SoapClient($wsdl,array(
         "cache_wsdl" => WSDL_CACHE_NONE,
@@ -85,8 +85,8 @@ if ($data) {
 
         echo json_encode(array('status' => 'Ncc Incluida com sucesso'));
     } catch (Exception $e) {
-        echo json_encode(array('status' => 'error', 'message' => $e->getMessage()));
+        echo json_encode(array('status' => $e->getMessage()));
     }
 } else {
-    echo json_encode(array('status' => 'error', 'message' => 'Dados não recebidos.'));
+    echo json_encode(array('status' => 'Dados não recebidos.'));
 }

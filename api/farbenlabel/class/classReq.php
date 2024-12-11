@@ -40,7 +40,7 @@ class RequestHandler {
 }
 
 
-//Classe que valida os Campos passas no corpo da requisição
+//Classe que valida os Campos passados no corpo da requisição
 class DataValidator {
     private $data;
 

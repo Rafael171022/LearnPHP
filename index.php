@@ -18,7 +18,7 @@
             include_once "api/FarbenLabel/router.php";
             break;
         case 'reclama':
-            include_once "api/Reclama/rotasReclama.php";
+            include_once "api/Reclama/routerSAC.php";
             break;
         default:
             echo "Rota não encontrada";

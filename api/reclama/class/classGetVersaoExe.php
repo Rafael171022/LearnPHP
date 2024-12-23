@@ -10,7 +10,7 @@ class ManipuladorDeVersaoDeArquivo {
 
     public function validarVersao() {
         include_once "./api/reclama/functions/Funcoes.php";
-        $this->versaoDoArquivo = obterVersaoArquivo("uploads/FarbenLabel/Exe/VersaoExe.ini", $this->ini, 'Version');
+        $this->versaoDoArquivo = obterVersaoArquivo("uploads/Reclama/Exe/VersaoExe.ini", $this->ini, 'Version');
         
         if ($this->versaoDoArquivo === null) {
             echo json_encode(['aviso' => 'Erro']);

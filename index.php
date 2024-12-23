@@ -12,14 +12,19 @@
 
     $method = $_SERVER['REQUEST_METHOD'];
     $rota   = $routes[2];
-    
+
     switch ($api) {
         case 'farbenlabel':
             include_once "api/FarbenLabel/router.php";
             break;
+
         case 'reclama':
             include_once "api/Reclama/routerSAC.php";
             break;
+
+        case 'tintometrico':
+                include_once "api/tintometrico/router.php";
+                break;
         default:
             echo "Rota não encontrada";
             exit;

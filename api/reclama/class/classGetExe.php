@@ -9,13 +9,13 @@ class ManipuladorDeArquivos {
     public function __construct($aplicativo, $ini) {
         $this->aplicativo = $aplicativo;
         $this->ini = $ini;
-        $this->caminhoDoArquivo = "uploads/FarbenLabel/Exe/" . $this->aplicativo;
+        $this->caminhoDoArquivo = "uploads/Reclama/Exe/" . $this->aplicativo;
     }
 
     public function validarVersao($versaoAtual) {
-        include_once "./api/reclama/functions/Funcoes.php";
-        $this->versaoDoArquivo = obterVersaoArquivo("uploads/reclama/Exe/VersaoExe.ini", $this->ini, 'Version');
-
+        include_once "./api/Reclama/functions/Funcoes.php";
+        $this->versaoDoArquivo = obterVersaoArquivo("uploads/Reclama/Exe/VersaoExe.ini", $this->ini, 'Version');
+       
         if ($versaoAtual < $this->versaoDoArquivo) {
             $this->enviarDetalhesDoArquivo();
         } else {
@@ -24,6 +24,7 @@ class ManipuladorDeArquivos {
     }
 
     private function enviarDetalhesDoArquivo() {
+        
         if (file_exists($this->caminhoDoArquivo)) {
             $tamanhoDoArquivo = filesize($this->caminhoDoArquivo);
             $nomeDoArquivo = basename($this->caminhoDoArquivo);

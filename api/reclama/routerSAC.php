@@ -3,13 +3,37 @@
 header('Content-Type: application/json');
 
 
+
 if ($method == "GET") {
-    //Rotas por GET
     switch ($rota) {
         case 'ajuda':
             include_once "routes/getAjuda.php";
             break;
 
+        case 'verifica-conexao':
+            include_once "routes/getConn.php";
+            break;
+
+        case 'versao':
+            include_once "routes/getVersao.php";
+            break;
+
+        case 'novaslabels':
+            include_once "routes/getVerLabel.php";
+            break;
+
+        case 'labels':
+            include_once "routes/getLabels.php";
+            break;
+
+        case 'atualizaExe':
+            include_once "routes/getExe.php";
+            break;
+
+        case 'ultima-atualizacao':
+            include_once "routes/getUltimaAtual.php";
+            break;
+            
         default:
             echo json_encode(['erro' => 'Rota desconhecida']);
             break;
